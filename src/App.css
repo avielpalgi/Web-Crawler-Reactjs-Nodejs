@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+
+}
+
+.App-header {
+  background-color: #222;
+  height: 50px;
+  padding: 20px;
+}
+
+.App-intro {
+  font-size: 30px;
+}
+.none-result{
+  display: none;
+}
+
+.Home {
+  background-color: rgba(78, 155, 226, 0.5);
+
+  overflow: scroll;
+  background-repeat:no-repeat;
+  background-size:100%;
+  background-position:fill;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.MainForm {
+
+  padding: 10px;
+}
+
+.Input {
+  position: relative;
+  margin: 0 auto;
+  width: 30%;
+  text-align: center;
+}
+
+
+.Result h1{
+}
+.Result{
+  text-align: left;
+  background-color: white;
+  border: 1px solid black;
+}
+.ulList{
+}
+.ulList li{
+  margin:1px;
+}
+.myButton {
+  margin:10px;
+	box-shadow: 0px 10px 14px -7px #3e7327;
+	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	background-color:#77b55a;
+	border-radius:4px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5b8a3c;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	background-color:#72b352;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.none{
+  margin:10px;
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #646d6b 5%, #4e5757 100%);
+	background-color:#c0c5c4;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+
+
+.redButton {
+  margin:10px;
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	border-radius:4px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.redButton:hover {
+	background-color:#eb675e;
+}
+.redButton:active {
+	position:relative;
+	top:1px;
+}
+
+.errorlist{
+  background-color: red;
+}
