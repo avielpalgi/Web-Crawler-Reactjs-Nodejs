@@ -1,18 +1,17 @@
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button,ListGroup } from 'react-bootstrap';
 import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios'
-
 
 function App() {
   const [depth, setDepth] = useState(2);
   const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
   const [res, setRes] = useState(false);
-  const [list, setlist] = useState(null);
+  const [list, setlist] = useState([]);
   const [validColor, setvalidColor] = useState('none')
   const [errorClass, setErrorClass] = useState("none-result")
-
+  const [str, setStr] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);
     setlist(null);
@@ -33,15 +32,14 @@ function App() {
 
   function isUrlValid(userInput) {
     var res = userInput.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-    if(res == null)
-        return false;
+    if (res == null)
+      return false;
     else
-        return true;
+      return true;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setRes(true);
     let urlAndDepth = {
       url: value.toString(),
       depth: depth
@@ -50,8 +48,14 @@ function App() {
   }
 
   const SendToServer = async (urlAndDepth) => {
-    axios.post('http://localhost:4000/app/urls',urlAndDepth)
-    .then(response => console.log(response.data))
+    axios.post('http://localhost:4000/app/urls', urlAndDepth).then(response => { GetFromServer(response.data) })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
 
   }
 
@@ -60,10 +64,17 @@ function App() {
       setErrorClass("error")
     }
     else {
-      setlist(data.data);
+      setlist(data);
+      RenderList(data);
     }
   }
-  
+
+  const RenderList = (data) => {
+    setRes(true);
+  }
+
+
+
 
   const clear = () => {
     setValue("");
@@ -107,10 +118,9 @@ function App() {
         </Button>
           </form>
         </div>
-        <div className={res ? 'Result' : 'none-result'}>
-          <h2>URL:{value}   Depth: {depth}</h2>
-          <ul className="ulList">{list ? list.map((link) => <li>{link.text} - {link.href}</li>) : null}</ul>
-        </div>
+        {list ? <div className={res ? 'Result' : 'none-result'}>
+          {list.map(childList=><ListGroup as="ul" className="depthUL"><p className="depthNum">Depth {childList.depth}</p> {childList.list.map(link=><ListGroup.Item as="li" className="link"><span className="textLink">{link.text}</span> - <span>{link.href}</span></ListGroup.Item>)}</ListGroup>)}
+        </div> : null}
         <div className={errorClass}><h1>Error</h1></div>
         <Button className="redButton" bsSize="large" bsStyle="primary" type="button" onClick={clear} >
           Clear

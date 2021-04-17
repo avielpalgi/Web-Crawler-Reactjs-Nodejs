@@ -126,3 +126,15 @@
 .errorlist{
   background-color: red;
 }
+
+.link{
+	word-wrap: break-word;
+}
+.textLink{
+	font-weight: 500;
+}
+.depthNum{
+	margin: 10px;
+	font-size: 22px;
+	font-weight: 650;
+}

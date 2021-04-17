@@ -3,5 +3,6 @@ Content-Type: application/json
 
 {
     "url":"https://sunbit.com/",
-    "depth":3
+    //"url":"https://sunbit.com/",
+    "depth":2
 }
